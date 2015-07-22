@@ -1,0 +1,31 @@
+{
+  "name": "workshop-tracker",
+  "version": "1.0.0",
+  "description": "A tracker for each workshoppers",
+  "main": "app.js",
+  "scripts": {
+    "build": "npm run build-chapters -- $P",
+    "start": "start",
+    "test": "standard && npm run verify",
+    "build-answers": "./scripts/build-answers.js $$",
+    "verify": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/js-vn/workshop-tracker.git"
+  },
+  "keywords": [
+    "NodeSchool",
+    "Workshop",
+    "Tracker"
+  ],
+  "author": "Do Minh Hai",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/js-vn/workshop-tracker/issues"
+  },
+  "homepage": "https://github.com/js-vn/workshop-tracker#readme",
+  "dependencies": {
+    "standard": "^5.0.0-2"
+  }
+}
