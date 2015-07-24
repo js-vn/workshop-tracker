@@ -1,0 +1,73 @@
+#!/usr/bin/env node
+
+var workshop = process.argv.length > 2 ? process.argv[2] : 'learnyounode'
+var challenge = process.argv.length > 3 ? process.argv[3] : 1
+if (challenge.length < 2) challenge = '0' + challenge
+var username
+if (process.argv.length > 4) {
+  username = process.argv[4]
+} else {
+  username = require('../utils').parseJsonFile('config/local.json')
+  if (username.hasOwnProperty('username')) {
+    username = username['username']
+  } else {
+    throw new Error('username does not exits')
+  }
+}
+
+var fs = require('fs')
+
+var workPath = 'workshops/' + workshop
+var path = workPath + '/' + challenge
+var file = path + '/' + username + '.js'
+
+fs.stat(file, function (err, stat) {
+  if (err) {
+    create()
+  } else {
+    console.log('File already exists. Do you want to replace, YES(Y) or NO(N)?')
+    process.stdin.resume()
+    process.stdin.setEncoding('utf8')
+    process.stdin.on('data', function (yes) {
+      yes = yes.toLowerCase()
+      if (yes === 'y' || yes === 'yes') {
+        console.log('yes')
+        create()
+      }
+      process.stdin.destroy()
+    })
+  }
+})
+
+function create () {
+  fs.stat(workPath, function (err, stat) {
+    if (err) {
+      fs.mkdir(workPath, function (err) {
+        if (err) throw err
+        createPath()
+      })
+    } else {
+      createPath()
+    }
+  })
+}
+
+function createPath () {
+  fs.stat(path, function (err, stat) {
+    if (err) {
+      fs.mkdir(path, function (err) {
+        if (err) throw err
+        createFile()
+      })
+    } else {
+      createFile()
+    }
+  })
+}
+
+function createFile () {
+  fs.writeFile(file, '// TODO your solution', function (err) {
+    if (err) throw err
+    console.log('Created %s.js in %s/%s', username, workshop, challenge)
+  })
+}

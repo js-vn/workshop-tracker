@@ -4,11 +4,12 @@
   "description": "A tracker for each workshoppers",
   "main": "app.js",
   "scripts": {
-    "build": "npm run build-answers -- $P",
-    "start": "start",
-    "test": "standard && npm run verify",
-    "build-answers": "./scripts/build-answers.js $$",
-    "verify": ""
+    "build": "npm run build-answers",
+    "start": "node scripts/build-answers.js",
+    "test": "standard",
+    "build-answers": "node scripts/build-answers.js",
+    "verify": "",
+    "new": "node scripts/new.js"
   },
   "repository": {
     "type": "git",
