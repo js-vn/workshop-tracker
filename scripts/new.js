@@ -28,13 +28,13 @@ fs.stat(file, function (err, stat) {
     console.log('File already exists. Do you want to replace, YES(Y) or NO(N)?')
     process.stdin.resume()
     process.stdin.setEncoding('utf8')
-    process.stdin.on('data', function (yes) {
-      yes = yes.toLowerCase()
-      if (yes === 'y' || yes === 'yes') {
-        console.log('yes')
-        create()
-      }
+    var yes = false
+    process.stdin.on('data', function (text) {
+      text = text.toLowerCase().substring(0, text.length - 1)
+      yes = (text == 'y' || text == 'yes')
       process.stdin.destroy()
+    }).on('close', function () {
+      if (yes) create()
     })
   }
 })
