@@ -10,21 +10,19 @@
       ]
     },
     "learnyounode": {
-      "01": [
-        "a",
-        "b",
-        "dominhhai"
-      ],
       "02": [
         "b",
         "c"
+      ],
+      "01": [
+        "a",
+        "b"
       ]
     }
   },
   "users": [
     "a",
     "b",
-    "dominhhai",
     "c"
   ]
 }
