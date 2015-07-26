@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/js-vn/workshop-tracker#readme",
   "dependencies": {
+    "run-parallel": "^1.1.2",
     "standard": "^5.0.0-2"
   }
 }

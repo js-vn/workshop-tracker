@@ -1,14 +1,30 @@
 {
-  "workshop": {
-    "javascripting": [
-      [],
-      []
-    ],
-    "learnyounode": [
-      []
-    ]
+  "workshops": {
+    "javascripting": {
+      "01": [
+        "a",
+        "b"
+      ],
+      "02": [
+        "a"
+      ]
+    },
+    "learnyounode": {
+      "01": [
+        "a",
+        "b",
+        "dominhhai"
+      ],
+      "02": [
+        "b",
+        "c"
+      ]
+    }
   },
-  "student": {
-    
-  }
+  "users": [
+    "a",
+    "b",
+    "dominhhai",
+    "c"
+  ]
 }

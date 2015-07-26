@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 var workshop = process.argv.length > 2 ? process.argv[2] : 'learnyounode'
-var challenge = process.argv.length > 3 ? process.argv[3] : 1
+var challenge = process.argv.length > 3 ? process.argv[3] : '01'
 if (challenge.length < 2) challenge = '0' + challenge
 var username
 if (process.argv.length > 4) {
@@ -16,10 +16,11 @@ if (process.argv.length > 4) {
 }
 
 var fs = require('fs')
+var path = require('path')
 
-var workPath = 'workshops/' + workshop
-var path = workPath + '/' + challenge
-var file = path + '/' + username + '.js'
+var workPath = path.join('workshops', workshop)
+var chalPath = path.join(workPath, challenge)
+var file = path.join(chalPath, username + '.js')
 
 fs.stat(file, function (err, stat) {
   if (err) {
@@ -31,7 +32,7 @@ fs.stat(file, function (err, stat) {
     var yes = false
     process.stdin.on('data', function (text) {
       text = text.toLowerCase().substring(0, text.length - 1)
-      yes = (text == 'y' || text == 'yes')
+      yes = (text === 'y' || text === 'yes')
       process.stdin.destroy()
     }).on('close', function () {
       if (yes) create()
@@ -53,9 +54,9 @@ function create () {
 }
 
 function createPath () {
-  fs.stat(path, function (err, stat) {
+  fs.stat(chalPath, function (err, stat) {
     if (err) {
-      fs.mkdir(path, function (err) {
+      fs.mkdir(chalPath, function (err) {
         if (err) throw err
         createFile()
       })
@@ -66,7 +67,7 @@ function createPath () {
 }
 
 function createFile () {
-  fs.writeFile(file, '// TODO your solution', function (err) {
+  fs.writeFile(file, '// TODO your solution\n', function (err) {
     if (err) throw err
     console.log('Created %s.js in %s/%s', username, workshop, challenge)
   })
