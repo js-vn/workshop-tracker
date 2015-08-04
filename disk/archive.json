@@ -7,22 +7,36 @@
       ],
       "02": [
         "a"
+      ],
+      "functions": [
+        "jokyspy"
+      ],
+      "scope": [
+        "jokyspy"
       ]
     },
     "learnyounode": {
-      "02": [
-        "b",
-        "c"
+      "1": [
+        "dominhhai"
       ],
       "01": [
         "a",
         "b"
+      ],
+      "02": [
+        "b",
+        "c"
+      ],
+      "hello-world": [
+        "jokyspy"
       ]
     }
   },
   "users": [
     "a",
     "b",
-    "c"
+    "jokyspy",
+    "c",
+    "dominhhai"
   ]
 }
